@@ -5,9 +5,21 @@ inputs:
     description: "Who to greet"
     required: true
     default: "World"
-outputs:
-  time: # id of output
-    description: "The time we greeted you"
+  api-key:
+    description: "Api Key for your firebase database"
+    required: true
+  database-url:
+    description: "Realtime Firebase Datbase Url"
+    required: true
+  project-id:
+    description: "ID of Firebase Project"
+    required: true
+  username:
+    description: "username to login firebase"
+    required: true
+  password:
+    description: "password to login firebase"
+    required: true
 runs:
   using: "node12"
   main: "dist/index.js"
