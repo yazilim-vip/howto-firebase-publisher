@@ -31,13 +31,14 @@ try {
   const USERNAME = core.getInput("username");
   const PASSWORD = core.getInput("password");
 
+  console.log("__dirname", __dirname);
+
   const firebaseConfig = {
     apiKey: API_KEY,
     databaseURL: DATABASE_URL,
     projectId: PROJECT_ID,
   };
 
-    console.log(__dir)
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase
@@ -67,6 +68,7 @@ try {
 } catch (error) {
   core.setFailed(error.message);
 }
+
 
 /***/ }),
 
