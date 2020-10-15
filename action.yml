@@ -1,10 +1,9 @@
 name: "HowTo Firebase Publisher"
 description: "Greet someone and record the time"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  howto-dir: # id of input
+    description: "The root directory of your howto archive"
     required: true
-    default: "World"
   api-key:
     description: "Api Key for your firebase database"
     required: true

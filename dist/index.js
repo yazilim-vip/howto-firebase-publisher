@@ -19,56 +19,54 @@ __webpack_require__(6149);
 __webpack_require__(9101);
 
 try {
-  // const genericErrorHandler = (error) => {
-  //   console.log("errorCode", error.code);
-  //   console.log("errorMessage", error.message);
-  // };
+  const genericErrorHandler = (error) => {
+    console.log("errorCode", error.code);
+    console.log("errorMessage", error.message);
+  };
 
-  // const API_KEY = core.getInput("api-key");
-  // const DATABASE_URL = core.getInput("database-url");
-  // const PROJECT_ID = core.getInput("project-id");
+  const API_KEY = core.getInput("api-key");
+  const DATABASE_URL = core.getInput("database-url");
+  const PROJECT_ID = core.getInput("project-id");
 
-  // const USERNAME = core.getInput("username");
-  // const PASSWORD = core.getInput("password");
+  const USERNAME = core.getInput("username");
+  const PASSWORD = core.getInput("password");
+  const HOWTO_DIR = core.getInput("howto-dir");
 
 
-  // console.log("__dirname", __dirname);
+  console.log("__dirname", __dirname);
 
-  // const firebaseConfig = {
-  //   apiKey: API_KEY,
-  //   databaseURL: DATABASE_URL,
-  //   projectId: PROJECT_ID,
-  // };
+  const firebaseConfig = {
+    apiKey: API_KEY,
+    databaseURL: DATABASE_URL,
+    projectId: PROJECT_ID,
+  };
 
-  // // Initialize Firebase
-  // firebase.initializeApp(firebaseConfig);
-  // firebase
-  //   .auth()
-  //   .signInWithEmailAndPassword(USERNAME, PASSWORD)
-  //   .catch(genericErrorHandler)
-  //   .then(() => {
-  //     generateHowtoAsync(`${__dirname}/../howto`).then((result) => {
-  //       firebase
-  //         .database()
-  //         .ref("howto")
-  //         .set(JSON.stringify(result))
-  //         .catch(genericErrorHandler)
-  //         .then(() => {
-  //           console.log("Operation Completed!");
-  //           firebase
-  //             .auth()
-  //             .signOut()
-  //             .catch(genericErrorHandler)
-  //             .then(() => {
-  //               console.log("Sign Out Success!");
-  //               process.exit(0);
-  //             });
-  //         });
-  //     });
-  //   });
-   // Get the JSON webhook payload for the event that triggered the workflow
-   const payload = JSON.stringify(github.context.payload, undefined, 2)
-   console.log(`The event payload: ${payload}`);
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(USERNAME, PASSWORD)
+    .catch(genericErrorHandler)
+    .then(() => {
+      generateHowtoAsync(HOWTO_DIR).then((result) => {
+        firebase
+          .database()
+          .ref("howto")
+          .set(JSON.stringify(result))
+          .catch(genericErrorHandler)
+          .then(() => {
+            console.log("Operation Completed!");
+            firebase
+              .auth()
+              .signOut()
+              .catch(genericErrorHandler)
+              .then(() => {
+                console.log("Sign Out Success!");
+                process.exit(0);
+              });
+          });
+      });
+    });
 } catch (error) {
   core.setFailed(error.message);
 }
