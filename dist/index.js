@@ -37,6 +37,7 @@ try {
     projectId: PROJECT_ID,
   };
 
+    console.log(__dir)
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase

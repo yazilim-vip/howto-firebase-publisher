@@ -25,6 +25,8 @@ try {
   const USERNAME = core.getInput("username");
   const PASSWORD = core.getInput("password");
 
+  console.log("__dirname", __dirname);
+
   const firebaseConfig = {
     apiKey: API_KEY,
     databaseURL: DATABASE_URL,
