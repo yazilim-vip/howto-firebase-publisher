@@ -31,10 +31,7 @@ try {
   const USERNAME = core.getInput("username");
   const PASSWORD = core.getInput("password");
   const HOWTO_DIR = core.getInput("howto-dir");
-
-
-  console.log("__dirname", __dirname);
-
+  
   const firebaseConfig = {
     apiKey: API_KEY,
     databaseURL: DATABASE_URL,
