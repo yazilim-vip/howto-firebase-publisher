@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "ncc build index.js --license licenses.txt"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
     "@actions/github": "^4.0.0",
     "@yazilimvip/howto-script": "^0.5.0",
     "firebase": "^7.23.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.24.1"
   }
 }
